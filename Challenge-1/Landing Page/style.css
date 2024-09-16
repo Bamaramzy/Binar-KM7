@@ -1,0 +1,497 @@
+/* General Styles */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000000;
+    font-size: 1.8rem;
+    line-height: 1.6;
+}
+
+.bg-header {
+    background-color: #F1F3FF;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+/* Set navbar background color and other styling */
+.navbar {
+    background-color: #F1F3FF;
+    /* Light background similar to your image */
+}
+
+.nav-link {
+    color: #000000;
+    /* Dark text for the links */
+    font-weight: 300;
+    /* Slightly bold text */
+    font-size: 18px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-right: 1rem;
+}
+
+.nav-link:hover {
+    color: #ffffff;
+    /* Add hover effect */
+}
+
+.navbar-brand img {
+    height: 40px;
+    /* Adjust logo size */
+}
+
+/* Spacing adjustments */
+.navbar-nav {
+    align-items: center;
+}
+
+.register-btn {
+    background-color: #5CB85F;
+    /* Green background for the register button */
+    color: #fff;
+    font-size: 22px;
+    border: none;
+    /* No border */
+    padding: 10px 20px;
+    /* Make the button bigger */
+    border-radius: 2px;
+    /* Slightly rounded corners */
+}
+
+.register-btn:hover {
+    background-color: #4cae4c;
+    /* Darker green on hover */
+}
+
+.btn-success {
+    background-color: #5CB85F;
+    border-radius: 2px;
+    /* Slightly rounded corners */
+}
+
+/* Mobile Toggler Styling */
+.navbar-toggler {
+    border: none;
+    /* Remove border around the toggler icon */
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,...");
+    /* Use the default Bootstrap icon or add your own */
+}
+
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+}
+
+.hero-title {
+    font-size: 2.8rem;
+}
+
+.lead {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+}
+
+
+.car-image {
+    position: absolute;
+    /* Allows us to place the image relative to its container */
+    bottom: 0;
+    /* Aligns the image to the bottom of the container */
+    right: 0;
+    /* Aligns the image to the right of the container */
+    width: 100%;
+    max-width: 700px;
+    /* Adjust the maximum width as per your design */
+    height: auto;
+    /* Keeps the aspect ratio */
+}
+
+.bold-text {
+    font-weight: bold;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.4rem;
+    }
+
+    .car-image {
+        max-width: 80%;
+        /* Adjust image width for smaller screens */
+        margin: 20px auto 0 auto;
+        /* Center the car image */
+    }
+}
+
+/* Services Section */
+/* Spacing for the description elements */
+.description-heading {
+    margin-bottom: 2rem;
+    /* Add space below h2 */
+    font-weight: 700;
+    /* Optional: Make the h2 bold */
+    font-size: 2rem;
+    /* Adjust the heading size */
+    color: #000000;
+}
+
+.description-text {
+    margin-bottom: 1.5rem;
+    /* Add space below the paragraph */
+    font-size: 1.4rem;
+    /* Optional: Adjust font size of paragraph */
+    color: #000000;
+    /* Optional: Adjust color to match the image */
+}
+
+/* Space between the list items */
+ul.list-unstyled li {
+    margin-bottom: 1rem;
+    /* Add space between list items */
+    font-size: 1.4rem;
+    /* Adjust the font size for list items */
+    color: #000000;
+}
+
+/* Custom styling for the check icons */
+.bi-check-circle-fill {
+    margin-right: 10px;
+    /* Space between the icon and the text */
+}
+
+/* Optional: Control image size */
+.service-image {
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* Additional Styles for List Icons */
+.bi-check-circle-fill {
+    color: #0d6efd;
+    margin-right: 10px;
+}
+
+/* Footer Styles or Additional Section Styles */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .user-image {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/* Why Us Section */
+.why-us h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.7rem;
+}
+
+.why-us p {
+    font-size: 1.6rem;
+    margin-bottom: 3.5rem;
+    /* Adjust margin to balance with the heading */
+}
+
+.why-us .card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    /* Ensure all cards have the same height */
+    display: flex;
+    align-items: center;
+    /* Align image and text */
+    flex-direction: row;
+    /* Display image and text side by side */
+    padding: 20px;
+}
+
+.why-us .card img {
+    margin-right: 20px;
+    margin-bottom: 70px;
+    /* Space between the image and text */
+    width: 40px;
+    /* Ensures all icons have consistent size */
+    float: left;
+    /* Align the image to the left */
+    display: block;
+    /* Align the image to the left of the content */
+}
+
+.why-us .card h5 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    margin-top: 4rem;
+    text-align: left;
+    /* Adjust margin for better spacing */
+}
+
+.why-us .card p {
+    font-size: 1rem;
+    margin-top: 1.5rem;
+    text-align: left;
+    /* Spacing below the text */
+}
+
+.why-us .row .col-md-3 {
+    margin-bottom: 20px;
+    /* Spacing between cards */
+}
+
+
+/* Adjust margins between the cards */
+.why-us .row .col-md-3 {
+    margin-bottom: 20px;
+    /* Ensures consistent spacing between cards */
+}
+
+/* Icon adjustments */
+.why-us .card img {
+    margin: 0 auto 7rem auto;
+    /* Ensures icons are centered in the cards */
+    display: block;
+
+}
+
+
+/* Testimonial Section */
+.testimonial {
+    background-color: #ffffff;
+    padding: 50px 0;
+}
+
+.testimonial h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.testimonial p {
+    font-size: 1.2rem;
+    color: #6c757d;
+    margin-bottom: 2rem;
+}
+
+.testimonial .card {
+    background-color: #eef2ff;
+    border: 1%;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+}
+
+.testimonial .user-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.testimonial .card {
+    background-color: #eef2ff;
+    /* Card background color */
+    border: none;
+    /* Updated to remove border */
+    border-radius: 10px;
+    /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    /* Box shadow */
+    padding: 30px;
+    /* Inner padding for the card */
+    width: 950px;
+    /* Set card width */
+    height: auto;
+    /* Auto height to fit content */
+    margin: 0 auto;
+    /* Center the card */
+}
+
+.testimonial .card-text {
+    font-size: 1rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+    color: #343a40;
+}
+
+.testimonial .user-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.testimonial .carousel-control-prev-icon,
+.testimonial .carousel-control-next-icon {
+    filter: invert(100%);
+    background-color: #00000000;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}
+
+
+/* Call to Action Section */
+.cta {
+    background-color: #ffffff;
+}
+
+.cta .card {
+    background-color: #0D28A6;
+    /* Card background color */
+    border: none;
+    /* Remove border */
+    border-radius: 10px;
+    /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    /* Shadow effect */
+    padding: 30px;
+    /* Padding inside the card */
+}
+
+.cta h2 {
+    margin-top: 3rem;
+    font-size: 2.5rem;
+    /* Heading size */
+    margin-bottom: 2rem;
+    /* Space below heading */
+    color: white;
+}
+
+.cta p {
+    font-size: 1rem;
+    /* Paragraph size */
+    color: white;
+    margin-bottom: 3rem;
+}
+
+.btn-success {
+    background-color: #28a745;
+    /* Button color */
+    border: none;
+    /* Remove border */
+    margin-bottom: 2.3rem;
+}
+
+/* FAQ Section */
+.faq h2 {
+    font-size: 2rem;
+    text-align: top-left;
+}
+
+.faq p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #0D28A6;
+    color: white;
+}
+
+/* Add spacing between accordion items */
+.accordion-item {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    /* You can adjust this value to increase or decrease the gap */
+}
+
+/* Optional: Add spacing inside the accordion body */
+.accordion-body {
+    padding: 15px;
+    /* You can also adjust this for spacing inside the content */
+}
+
+/* Optional: Add padding to the accordion buttons for more space */
+.accordion-button {
+    padding: 10px 20px;
+    /* Adjust as needed */
+}
+
+
+/*Footer */
+footer {
+    background-color: #ffffff;
+    padding: 20px 0;
+}
+
+footer h6 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    color: #000;
+}
+
+footer p {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    margin-bottom: 1rem;
+    color: #000;
+    text-align: left
+}
+
+footer .list-inline {
+    padding: 0;
+    margin: 1rem 0;
+}
+
+footer .list-inline-item {
+    margin-right: 10px;
+}
+
+footer .list-inline-item a img {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+}
+
+footer .list-unstyled {
+    padding-left: 0;
+}
+
+footer .list-unstyled li {
+    margin-bottom: 0.5rem;
+}
+
+footer .list-unstyled a {
+    color: #000;
+    text-decoration: none;
+}
+
+footer .list-unstyled a:hover {
+    text-decoration: underline;
+}
+
+footer .text-left img {
+    margin-top: 10px;
+}
+
+.footer-logo {
+    display: block;
+    margin-left: 0;
+    /* Ensure the margin is set to 0 to align it to the left */
+    margin-top: 10px;
+    /* Adjust spacing from the top as needed */
+    width: 80px;
+    /* Set the width as needed */
+}
