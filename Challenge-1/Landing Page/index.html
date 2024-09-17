@@ -16,10 +16,12 @@
         <nav class="navbar navbar-expand-lg py-4">
             <div class="container">
                 <a class="navbar-brand" href="#"><img src="/asset/logo.png" alt="Logo"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu"
+                    aria-controls="mobileMenu">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
+                <!-- Desktop Nav Links -->
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item px-2">
@@ -39,6 +41,35 @@
                         </li>
                     </ul>
                 </div>
+
+                <!-- Off-Canvas Mobile Menu -->
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu"
+                    aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">BCR</h5>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#our-services">Our Services</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#Why-us">Why Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#testimoni">Testimonial</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#faq">FAQ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn register-btn" href="#">Register</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </nav>
 
@@ -50,9 +81,9 @@
                         <h1 class="bold-text">Sewa & Rental Mobil Terbaik di kawasan (Lokasimu)</h1>
                         <p class="lead">Selamat datang di Binar Car Rental. Kami menyediakan mobil kualitas terbaik
                             dengan harga terjangkau. Selalu siap melayanimu untuk sewa mobil selama 24 jam.</p>
-                        <a href="#" class="btn btn-success">Mulai Sewa Mobil</a>
+                        <a href="#" class="btn btn-success mt-3">Mulai Sewa Mobil</a>
                     </div>
-                    <div class="col-lg-6 col-md-12 text-center">
+                    <div class="col-lg-6 col-md-12">
                         <img src="/Challenge-1/asset/img_car.png" alt="Car" class="img-fluid car-image">
                     </div>
                 </div>
@@ -96,8 +127,8 @@
 
     <!-- Why Us Section -->
     <section id="why-us" class="why-us py-5">
-        <div class="container "> <!-- Add text-center for consistent alignment -->
-            <h2 class="bold-text">Why Us?</h2>
+        <div class="container ">
+            <h2 class="">Why Us?</h2>
             <p class="lead">Mengapa harus pilih Binar Car Rental?</p>
 
             <div class="row mt-4">
@@ -153,7 +184,7 @@
     <!-- Testimonial Section -->
     <section id="testimoni" class="testimonial py-5">
         <div class="container text-center">
-            <h2 class="bold-text">Testimonial</h2>
+            <h2 class="">Testimonial</h2>
             <p>Berbagai review positif dari para pelanggan kami</p>
             <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
@@ -223,7 +254,7 @@
                 <div class="col-md-12">
                     <div class="card p-3">
                         <div class="card-body">
-                            <h2 class="bold-text">Sewa Mobil di (Lokasimu) Sekarang</h2>
+                            <h2 class="">Sewa Mobil di (Lokasimu) Sekarang</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                                 ut labore et dolore magna aliqua.</p>
                             <a href="#" class="btn btn-success mt-3">Mulai Sewa Mobil</a>
@@ -344,27 +375,28 @@
                 <!-- Services Section -->
                 <div class="col-md-3">
                     <ul class="list-unstyled">
-                        <li class="nav-link"><a href="#our-services"> Our Services</a></li>
+                        <li class="nav-link"><a href="#our-services">Our Services</a></li>
                         <li class="nav-link"><a href="#Why-us">Why Us</a></li>
                         <li class="nav-link"><a href="#testimoni">Testimonial</a></li>
                         <li class="nav-link"><a href="#faq">FAQ</a></li>
                     </ul>
                 </div>
 
+
                 <!-- Social Media Icons Section -->
-                <div class="col-md-3 text-center">
+                <div class="col-md-3 ">
                     <h6>Connect with us</h6>
                     <ul class="list-inline">
                         <li class="list-inline-item"><a href="#"><img src="/Challenge-1/asset/icon_facebook.png"
-                                    alt="Facebook" width="30"></a></li>
+                                    alt="Facebook" width="30" class="social-media"></a></li>
                         <li class="list-inline-item"><a href="#"><img src="/Challenge-1/asset/icon_instagram.png"
-                                    alt="Instagram" width="30"></a></li>
+                                    alt="Instagram" width="30" class="social-media"></a></li>
                         <li class="list-inline-item"><a href="#"><img src="/Challenge-1/asset/icon_twitter.png"
-                                    alt="Twitter" width="30"></a></li>
+                                    alt="Twitter" width="30" class="social-media"></a></li>
                         <li class="list-inline-item"><a href="#"><img src="/Challenge-1/asset/icon_mail.png" alt="Mail"
-                                    width="30"></a></li>
+                                    width="30" class="social-media"></a></li>
                         <li class="list-inline-item"><a href="#"><img src="/Challenge-1/asset/icon_twitch.png"
-                                    alt="Twitch" width="30"></a></li>
+                                    alt="Twitch" width="30" class="social-media"></a></li>
                     </ul>
                 </div>
 

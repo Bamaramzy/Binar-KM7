@@ -1,92 +1,61 @@
-/* General Styles */
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    color: #000000;
-    font-size: 1.8rem;
-    line-height: 1.6;
-}
-
+/* Main Header and Navbar */
 .bg-header {
     background-color: #F1F3FF;
     padding-bottom: 20px;
     position: relative;
+    overflow: hidden;
 }
 
-/* Set navbar background color and other styling */
+/* Navbar settings */
 .navbar {
     background-color: #F1F3FF;
-    /* Light background similar to your image */
 }
 
 .nav-link {
     color: #000000;
-    /* Dark text for the links */
     font-weight: 300;
-    /* Slightly bold text */
     font-size: 18px;
+    text-align: left;
     padding-left: 20px;
     padding-right: 20px;
     margin-right: 1rem;
+
 }
 
 .nav-link:hover {
     color: #ffffff;
-    /* Add hover effect */
 }
 
 .navbar-brand img {
     height: 40px;
-    /* Adjust logo size */
+    margin: auto;
 }
 
-/* Spacing adjustments */
 .navbar-nav {
     align-items: center;
 }
 
 .register-btn {
     background-color: #5CB85F;
-    /* Green background for the register button */
     color: #fff;
     font-size: 22px;
     border: none;
-    /* No border */
     padding: 10px 20px;
-    /* Make the button bigger */
     border-radius: 2px;
-    /* Slightly rounded corners */
 }
 
 .register-btn:hover {
     background-color: #4cae4c;
-    /* Darker green on hover */
 }
-
-.btn-success {
-    background-color: #5CB85F;
-    border-radius: 2px;
-    /* Slightly rounded corners */
-}
-
-/* Mobile Toggler Styling */
-.navbar-toggler {
-    border: none;
-    /* Remove border around the toggler icon */
-}
-
-.navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,...");
-    /* Use the default Bootstrap icon or add your own */
-}
-
 
 /* Hero Section */
 .hero-section {
     position: relative;
+    padding: 5rem 0;
+}
+
+.hero-section h1 {
+    margin-bottom: 1rem;
 }
 
 .hero-title {
@@ -96,40 +65,182 @@ body {
 .lead {
     font-size: 1.6rem;
     margin-bottom: 20px;
+    text-align: left;
 }
-
 
 .car-image {
     position: absolute;
-    /* Allows us to place the image relative to its container */
     bottom: 0;
-    /* Aligns the image to the bottom of the container */
     right: 0;
-    /* Aligns the image to the right of the container */
-    width: 100%;
-    max-width: 700px;
-    /* Adjust the maximum width as per your design */
+    width: auto;
+    max-width: 100%;
     height: auto;
-    /* Keeps the aspect ratio */
+    z-index: 1;
 }
 
 .bold-text {
     font-weight: bold;
+    text-align: left;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .hero-title {
-        font-size: 2.4rem;
+/* Customizing the "Mulai Sewa Mobil" button size */
+.btn-success {
+    background-color: #5CB85F;
+    color: #fff;
+    font-size: 22px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 2px;
+}
+
+.btn-success:hover {
+    background-color: #4cae4c;
+}
+
+
+/* Adjustments for Desktop and Larger Screens */
+@media (min-width: 992px) {
+    .hero-section {
+        padding-top: 7rem;
+    }
+
+    .offcanvas {
+        display: none;
     }
 
     .car-image {
-        max-width: 80%;
-        /* Adjust image width for smaller screens */
-        margin: 20px auto 0 auto;
-        /* Center the car image */
+        bottom: -50px;
+        /* Adjusts car to the bottom outside the container */
+        right: -50px;
+        /* Shifts the car to the right */
+        width: 55%;
+        max-width: 100%;
+
     }
 }
+
+/* Adjustments for Smaller Screens (Mobile) */
+@media (max-width: 768px) {
+    .navbar-collapse {
+        display: none !important;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-section .btn-success {
+        display: block;
+        margin-left: 0;
+        text-align: left;
+        font-size: 18px;
+        /* Match size of CTA button */
+        padding: 15px 25px;
+        /* Adjust padding to match */
+        border-radius: 5px;
+        /* Slightly rounded corners */
+        width: 100%;
+        /* Make the button full-width on mobile */
+        max-width: 200px;
+        /* Limit max width */
+        margin-top: 20px;
+        /* Add some margin on top */
+    }
+
+    .hero-section .lead {
+        text-align: left;
+    }
+
+    .hero-section h1 {
+        text-align: left;
+    }
+
+    .lead {
+        font-size: 1.4rem;
+    }
+
+    .car-image {
+        position: static;
+        bottom: 0;
+        transform: translateY(21%)translateX(-7%);
+        margin-top: 10px;
+        max-width: 130%;
+    }
+
+    .register-btn {
+        font-size: 20px;
+    }
+
+    .btn-success {
+        font-size: 18px;
+        /* Match size of CTA button */
+        padding: 15px 25px;
+        /* Match padding */
+    }
+
+    /* Off-Canvas Mobile Menu */
+    .offcanvas-body {
+        text-align: left;
+        /* Align text to the left */
+    }
+
+    .offcanvas-body a {
+        text-align: left;
+    }
+
+    .offcanvas .navbar-nav .nav-item {
+        width: 100%;
+        /* Ensure the nav items take up the full width */
+        margin-bottom: 1rem;
+        /* Add spacing between each item */
+    }
+
+    .offcanvas .navbar-nav .nav-link {
+        text-align: left;
+        /* Ensure each nav-link is aligned left */
+        padding-left: 0;
+        /* Remove extra padding */
+        margin-bottom: 1rem;
+        /* Add some spacing between items */
+        font-weight: bold;
+    }
+
+    .offcanvas .navbar-nav .nav-link:hover {
+        text-decoration: underline;
+        color: #0D28A6;
+    }
+
+    .offcanvas .register-btn {
+        display: block;
+        margin-left: 0;
+        text-align: center;
+        font-size: 18px;
+        /* Match size of CTA button */
+        padding: 15px 25px;
+        /* Adjust padding to match */
+        border-radius: 5px;
+        /* Slightly rounded corners */
+        width: 40%;
+        /* Make the button full-width on mobile */
+        max-width: 200px;
+        /* Limit max width */
+        margin-top: 20px;
+        /* Add some margin on top */
+    }
+
+    .offcanvas-header {
+        text-align: left;
+        /* Align header text to the left */
+    }
+
+    .offcanvas-title {
+        font-size: 25px;
+        font-weight: bold;
+        /* Add emphasis to the title */
+    }
+}
+
+
 
 /* Services Section */
 /* Spacing for the description elements */
@@ -180,34 +291,18 @@ ul.list-unstyled li {
     margin-right: 10px;
 }
 
-/* Footer Styles or Additional Section Styles */
-footer {
-    background-color: #333;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-}
-
-
-@media (max-width: 768px) {
-    .navbar-nav {
-        text-align: center;
-    }
-
-    .user-image {
-        width: 100px;
-        height: 100px;
-    }
-}
 
 /* Why Us Section */
 .why-us h2 {
     font-size: 2.5rem;
     margin-bottom: 1.7rem;
+    font-weight: bold;
+    text-align: left;
 }
 
 .why-us p {
     font-size: 1.6rem;
+    text-align: left;
     margin-bottom: 3.5rem;
     /* Adjust margin to balance with the heading */
 }
@@ -275,6 +370,16 @@ footer {
 
 }
 
+/* Mobile Version: Center align for h2 and p */
+@media (max-width: 768px) {
+
+    .why-us h2,
+    .why-us p {
+        text-align: center;
+        /* Center the heading and text on mobile screens */
+    }
+}
+
 
 /* Testimonial Section */
 .testimonial {
@@ -296,12 +401,16 @@ footer {
 
 .testimonial .card {
     background-color: #eef2ff;
-    border: 1%;
+    border: none;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     padding: 30px;
+    width: 950px;
+    height: auto;
+    margin: 0 auto;
 }
 
+/* User Image */
 .testimonial .user-image {
     width: 80px;
     height: 80px;
@@ -309,25 +418,7 @@ footer {
     flex-shrink: 0;
 }
 
-.testimonial .card {
-    background-color: #eef2ff;
-    /* Card background color */
-    border: none;
-    /* Updated to remove border */
-    border-radius: 10px;
-    /* Rounded corners */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    /* Box shadow */
-    padding: 30px;
-    /* Inner padding for the card */
-    width: 950px;
-    /* Set card width */
-    height: auto;
-    /* Auto height to fit content */
-    margin: 0 auto;
-    /* Center the card */
-}
-
+/* Text and User Info */
 .testimonial .card-text {
     font-size: 1rem;
     font-style: italic;
@@ -341,14 +432,45 @@ footer {
     margin-top: 1rem;
 }
 
+/* Carousel Controls */
 .testimonial .carousel-control-prev-icon,
 .testimonial .carousel-control-next-icon {
     filter: invert(100%);
-    background-color: #00000000;
+    background-color: transparent;
     border-radius: 50%;
     width: 30px;
     height: 30px;
 }
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .testimonial h2 {
+        font-size: 2rem;
+    }
+
+    .testimonial p {
+        font-size: 1.6rem;
+    }
+
+    .testimonial .card {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .testimonial .user-image {
+        width: 60px;
+        height: 60px;
+    }
+
+    .testimonial .card-text {
+        font-size: 0.9rem;
+    }
+
+    .testimonial .user-name {
+        font-size: 1rem;
+    }
+}
+
 
 
 /* Call to Action Section */
@@ -376,6 +498,7 @@ footer {
     margin-bottom: 2rem;
     /* Space below heading */
     color: white;
+    font-weight: bold;
 }
 
 .cta p {
@@ -395,13 +518,22 @@ footer {
 
 /* FAQ Section */
 .faq h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     text-align: top-left;
 }
 
 .faq p {
-    font-size: 1rem;
+    font-size: 1.6rem;
     margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+
+    .faq h2,
+    .faq p {
+        text-align: center;
+        /* Center the heading and text on mobile screens */
+    }
 }
 
 .accordion-button:not(.collapsed) {
@@ -429,69 +561,88 @@ footer {
 }
 
 
-/*Footer */
+/* Footer */
 footer {
     background-color: #ffffff;
     padding: 20px 0;
 }
 
-footer h6 {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-    font-weight: bold;
-    color: #000;
-}
-
-footer p {
+footer h6,
+footer p,
+footer a {
     font-size: 1rem;
     margin: 0.5rem 0;
-    margin-bottom: 1rem;
     color: #000;
-    text-align: left
+    text-align: left;
+    /* Align text to the left */
 }
 
-footer .list-inline {
+footer h6 {
+    font-weight: bold;
+}
+
+footer .list-inline,
+footer .list-unstyled {
     padding: 0;
-    margin: 1rem 0;
+    margin-left: 0;
+    list-style-type: none;
+    /* Remove default list styles */
+    text-align: left;
+    /* Ensure lists are left-aligned */
 }
 
-footer .list-inline-item {
-    margin-right: 10px;
+footer .list-inline-item,
+footer .list-unstyled li {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+footer .list-inline-item a img,
+footer .list-unstyled a {
+    text-align: left;
+    /* Ensure links and icons are aligned left */
+    color: #000000;
+    text-decoration: none;
 }
 
 footer .list-inline-item a img {
     width: 30px;
     height: 30px;
-    display: inline-block;
-}
-
-footer .list-unstyled {
-    padding-left: 0;
-}
-
-footer .list-unstyled li {
-    margin-bottom: 0.5rem;
-}
-
-footer .list-unstyled a {
-    color: #000;
-    text-decoration: none;
 }
 
 footer .list-unstyled a:hover {
     text-decoration: underline;
+    color: #0D28A6;
 }
 
-footer .text-left img {
-    margin-top: 10px;
-}
-
-.footer-logo {
+footer .footer-logo,
+.social-media {
     display: block;
     margin-left: 0;
-    /* Ensure the margin is set to 0 to align it to the left */
+    /* Align logo and social media icons to the left */
     margin-top: 10px;
-    /* Adjust spacing from the top as needed */
     width: 80px;
-    /* Set the width as needed */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    footer .row {
+        flex-direction: column;
+        text-align: left;
+        /* Stack the footer sections vertically on mobile */
+    }
+
+    footer .col-md-3 {
+        margin-bottom: 20px;
+        /* Add some space between each footer section */
+    }
+
+    footer .list-unstyled .nav-link {
+        padding: 0;
+        margin-left: 0;
+        list-style-type: none;
+        /* Remove default list styles */
+        text-align: left;
+        /* Ensure lists are left-aligned */
+    }
 }
