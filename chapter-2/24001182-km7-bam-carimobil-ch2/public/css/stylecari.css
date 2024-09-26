@@ -1,0 +1,489 @@
+/* Main Header and Navbar */
+.bg-header {
+    background-color: #F1F3FF;
+    padding-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Navbar settings */
+.navbar {
+    background-color: #F1F3FF;
+}
+
+.nav-link {
+    color: #000000;
+    font-weight: 300;
+    font-size: 18px;
+    text-align: left;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-right: 1rem;
+
+}
+
+.nav-link:hover {
+    color: #ffffff;
+}
+
+.navbar-brand img {
+    height: 40px;
+    margin: auto;
+}
+
+.navbar-nav {
+    align-items: center;
+}
+
+.register-btn {
+    background-color: #5CB85F;
+    color: #fff;
+    font-size: 22px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 2px;
+}
+
+.register-btn:hover {
+    background-color: #4cae4c;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    padding: 5rem 0;
+}
+
+.hero-section h1 {
+    margin-bottom: 1rem;
+}
+
+.hero-title {
+    font-size: 2.8rem;
+}
+
+.lead {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.car-image {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    z-index: 1;
+}
+
+.bold-text {
+    font-weight: bold;
+    text-align: left;
+}
+
+/* Customizing the "Mulai Sewa Mobil" button size */
+.btn-success {
+    background-color: #5CB85F;
+    color: #fff;
+    font-size: 22px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 2px;
+}
+
+.btn-success:hover {
+    background-color: #4cae4c;
+}
+
+
+/* Adjustments for Desktop and Larger Screens */
+@media (min-width: 992px) {
+    .hero-section {
+        padding-top: 7rem;
+    }
+
+    .offcanvas {
+        display: none;
+    }
+
+    .car-image {
+        bottom: -50px;
+        /* Adjusts car to the bottom outside the container */
+        right: -50px;
+        /* Shifts the car to the right */
+        width: 45%;
+        max-width: 100%;
+
+    }
+}
+
+/* Adjustments for Smaller Screens (Mobile) */
+@media (max-width: 768px) {
+    .navbar-collapse {
+        display: none !important;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-section .btn-success {
+        display: block;
+        margin-left: 0;
+        text-align: left;
+        font-size: 18px;
+        /* Match size of CTA button */
+        padding: 15px 25px;
+        /* Adjust padding to match */
+        border-radius: 5px;
+        /* Slightly rounded corners */
+        width: 100%;
+        /* Make the button full-width on mobile */
+        max-width: 200px;
+        /* Limit max width */
+        margin-top: 20px;
+        /* Add some margin on top */
+    }
+
+    .hero-section .lead {
+        text-align: left;
+    }
+
+    .hero-section h1 {
+        text-align: left;
+    }
+
+    .lead {
+        font-size: 1.4rem;
+    }
+
+    .car-image {
+        position: relative;
+        bottom: 0;
+        transform: translateY(34%)translateX(0%);
+        margin-top: 10px;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .register-btn {
+        font-size: 20px;
+    }
+
+    .btn-success {
+        font-size: 18px;
+        /* Match size of CTA button */
+        padding: 15px 25px;
+        /* Match padding */
+    }
+
+    /* Off-Canvas Mobile Menu */
+    .offcanvas-body {
+        text-align: left;
+        /* Align text to the left */
+    }
+
+    .offcanvas-body a {
+        text-align: left;
+    }
+
+    .offcanvas .navbar-nav .nav-item {
+        width: 100%;
+        /* Ensure the nav items take up the full width */
+        margin-bottom: 1rem;
+        /* Add spacing between each item */
+    }
+
+    .offcanvas .navbar-nav .nav-link {
+        text-align: left;
+        /* Ensure each nav-link is aligned left */
+        padding-left: 0;
+        /* Remove extra padding */
+        margin-bottom: 1rem;
+        /* Add some spacing between items */
+        font-weight: bold;
+    }
+
+    .offcanvas .navbar-nav .nav-link:hover {
+        text-decoration: underline;
+        color: #0D28A6;
+    }
+
+    .offcanvas .register-btn {
+        display: block;
+        margin-left: 0;
+        text-align: center;
+        font-size: 18px;
+        /* Match size of CTA button */
+        padding: 15px 25px;
+        /* Adjust padding to match */
+        border-radius: 5px;
+        /* Slightly rounded corners */
+        width: 40%;
+        /* Make the button full-width on mobile */
+        max-width: 200px;
+        /* Limit max width */
+        margin-top: 20px;
+        /* Add some margin on top */
+    }
+
+    .offcanvas-header {
+        text-align: left;
+        /* Align header text to the left */
+    }
+
+    .offcanvas-title {
+        font-size: 25px;
+        font-weight: bold;
+        /* Add emphasis to the title */
+    }
+}
+
+/* CSS untuk Search Section */
+.search-section {
+    padding: 0;
+    justify-content:center;
+    position: relative;
+    z-index: 2;
+    transform: translateY(100%) ;
+}
+
+.card { 
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    position:relative;
+}
+.card .form-control,
+.card .form-select {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+}
+
+.card .btn-success {
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+}
+
+.card .btn-success:hover {
+    background-color: #218838;
+}
+
+.input-group-text {
+    background-color: #ffffff;
+    border-left: 0;
+}
+
+.input-group .form-control {
+    border-right: 0;
+}
+
+/* Style untuk menyesuaikan layout form */
+.col-md-2-5 {
+    flex: 0 0 auto;
+    width: 20.5%;
+}
+
+/* CSS untuk Car List Section */
+.car-list-section {
+    background-color: #ffffff; 
+    padding-top: 20px;
+    margin-top: 100px;
+}
+
+.car-list-section .card {
+    border: none;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+}
+
+.car-list-section .card img {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.car-list-section .card .list-group-item {
+    border: none;
+    padding: 10px 15px;
+}
+
+.car-list-section .card .btn-primary {
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+}
+
+.car-list-section .card .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Hasil Filter */
+#carListContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start; /* Untuk distribusi yang lebih baik */
+}
+
+#carListContainer .card {
+    flex-basis: calc(33.333% - 20px); /* Setiap card akan mengambil 1/3 dari lebar kontainer dengan jarak antar item */
+    background-color: #fff;
+    border: none;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Efek bayangan */
+    border-radius: 10px;
+    padding: 15px;
+    transition: transform 0.3s ease-in-out;
+    margin-top: 10px;
+}
+
+#carListContainer .card:hover {
+    transform: translateY(-10px); /* Efek hover: Card akan naik */
+}
+
+.card-img-top {
+    max-height: 180px;
+    object-fit: cover; /* Pastikan gambar tetap rapi dalam card */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#carListContainer .card h5 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#carListContainer .card p {
+    font-size: 14px;
+    color: #6c757d;
+    margin-bottom: 10px;
+}
+
+/* Styling untuk informasi mobil */
+#carListContainer .list-group-item {
+    font-size: 14px;
+    padding: 8px 15px;
+    background-color: #f8f9fa;
+}
+
+/* Button styling */
+#carListContainer .btn-success {
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 14px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+#carListContainer .btn-success:hover {
+    background-color: #218838;
+}
+
+/* Responsive Layout untuk Mobile */
+@media (max-width: 768px) {
+    #carListContainer .card {
+        flex-basis: 100%; /* Card mengambil 100% lebar layar di perangkat kecil */
+    }
+
+    .search-card {
+        margin-bottom: 20px; /* Jarak antara card search dan hasil pada mobile */
+    }
+}
+
+
+
+
+
+/* Footer */
+footer {
+    background-color: #ffffff;
+    padding: 20px 0;
+}
+
+footer h6,
+footer p,
+footer a {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    color: #000;
+    text-align: left;
+    /* Align text to the left */
+}
+
+footer h6 {
+    font-weight: bold;
+}
+
+footer .list-inline,
+footer .list-unstyled {
+    padding: 0;
+    margin-left: 0;
+    list-style-type: none;
+    /* Remove default list styles */
+    text-align: left;
+    /* Ensure lists are left-aligned */
+}
+
+footer .list-inline-item,
+footer .list-unstyled li {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+footer .list-inline-item a img,
+footer .list-unstyled a {
+    text-align: left;
+    /* Ensure links and icons are aligned left */
+    color: #000000;
+    text-decoration: none;
+}
+
+footer .list-inline-item a img {
+    width: 30px;
+    height: 30px;
+}
+
+footer .list-unstyled a:hover {
+    text-decoration: underline;
+    color: #0D28A6;
+}
+
+footer .footer-logo,
+.social-media {
+    display: block;
+    margin-left: 0;
+    /* Align logo and social media icons to the left */
+    margin-top: 10px;
+    width: 80px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    footer .row {
+        flex-direction: column;
+        text-align: left;
+        /* Stack the footer sections vertically on mobile */
+    }
+
+    footer .col-md-3 {
+        margin-bottom: 20px;
+        /* Add some space between each footer section */
+    }
+
+    footer .list-unstyled .nav-link {
+        padding: 0;
+        margin-left: 0;
+        list-style-type: none;
+        /* Remove default list styles */
+        text-align: left;
+        /* Ensure lists are left-aligned */
+    }
+}
