@@ -1,9 +1,7 @@
 // Fetch mobil dari file JSON
 async function fetchAllCars() {
   try {
-    const cars = await fetch("../data/cars.json").then((response) =>
-      response.json()
-    );
+    const cars = await fetch("cars.json").then((response) => response.json());
     return cars;
   } catch (error) {
     console.error("Error fetching cars data: ", error);
