@@ -57,7 +57,13 @@ function filterCars(cars, filter) {
     const isDateMatch =
       !selectedDate || (carAvailableAt && carAvailableAt <= selectedDate);
 
-    return isCapacityMatch && isDateMatch;
+    // Filter berdasarkan tipe driver
+    const isDriverMatch =
+      (filter.driver === "Dengan Supir" && car.available === true) ||
+      (filter.driver === "Tanpa Supir" && car.available === false) ||
+      !filter.driver;
+
+    return isCapacityMatch && isDateMatch && isDriverMatch;
   });
 }
 
@@ -73,6 +79,9 @@ document
     const date = document.getElementById("datepicker").value;
     const capacity = document.getElementById("jumlahPenumpang").value;
 
+    // Ambil pilihan tipe driver
+    const driverType = document.getElementById("tipeDriver").value;
+
     // objek filter berdasarkan input pengguna
     const filter = {};
 
@@ -81,6 +90,9 @@ document
     }
     if (capacity) {
       filter.capacity = parseInt(capacity);
+    }
+    if (driverType) {
+      filter.driver = driverType;
     }
 
     // Filter mobil dan tampilkan hasilnya
