@@ -327,14 +327,14 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: flex-start; /* Untuk distribusi yang lebih baik */
+    justify-content: flex-start; 
 }
 
 #carListContainer .card {
-    flex-basis: calc(33.333% - 20px); /* Setiap card akan mengambil 1/3 dari lebar kontainer dengan jarak antar item */
+    flex-basis: calc(33.333% - 20px); 
     background-color: #fff;
     border: none;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Efek bayangan */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); 
     border-radius: 10px;
     padding: 15px;
     transition: transform 0.3s ease-in-out;
@@ -342,12 +342,12 @@
 }
 
 #carListContainer .card:hover {
-    transform: translateY(-10px); /* Efek hover: Card akan naik */
+    transform: translateY(-10px); 
 }
 
 .card-img-top {
     max-height: 180px;
-    object-fit: cover; /* Pastikan gambar tetap rapi dalam card */
+    object-fit: cover; 
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
@@ -390,17 +390,13 @@
 /* Responsive Layout untuk Mobile */
 @media (max-width: 768px) {
     #carListContainer .card {
-        flex-basis: 100%; /* Card mengambil 100% lebar layar di perangkat kecil */
+        flex-basis: 100%; 
     }
 
     .search-card {
-        margin-bottom: 20px; /* Jarak antara card search dan hasil pada mobile */
+        margin-bottom: 20px; 
     }
 }
-
-
-
-
 
 /* Footer */
 footer {

@@ -41,6 +41,34 @@ function displayCars(filteredCars) {
   });
 }
 
+//  tanggal acak sebulan lalu hingga sebulan ke depan
+class Binar {
+  static populateCars(cars) {
+    return cars.map((car) => {
+      const timeAt = new Date(); // Waktu sekarang
+
+      // Waktu sebulan lalu dan sebulan ke depan
+      const oneMonthMillis = 30 * 24 * 60 * 60 * 1000;
+      const oneMonthAgo = timeAt.getTime() - oneMonthMillis;
+      const oneMonthAhead = timeAt.getTime() + oneMonthMillis;
+
+      // tanggal acak antara sebulan yang lalu dan sebulan yang akan datang
+      const randomTime = getRandomInt(oneMonthAgo, oneMonthAhead);
+      const availableAt = new Date(randomTime);
+
+      return {
+        ...car,
+        availableAt,
+      };
+    });
+  }
+}
+
+// Fungsi untuk menghasilkan angka acak dalam rentang tertentu
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 // Fungsi untuk filter data mobil
 function filterCars(cars, filter) {
   return cars.filter((car) => {
@@ -65,22 +93,24 @@ function filterCars(cars, filter) {
   });
 }
 
+// Event listener untuk tombol pencarian
 document
   .getElementById("searchCarButton")
   .addEventListener("click", async (event) => {
-    event.preventDefault(); // Mencegah submit form bawaan
+    event.preventDefault();
 
     // Ambil data dari file JSON
     const cars = await fetchAllCars();
 
+    // Memperbarui data mobil dengan tanggal availableAt acak
+    const populatedCars = Binar.populateCars(cars);
+
     // Ambil input dari form
     const date = document.getElementById("datepicker").value;
     const capacity = document.getElementById("jumlahPenumpang").value;
-
-    // Ambil pilihan tipe driver
     const driverType = document.getElementById("tipeDriver").value;
 
-    // objek filter berdasarkan input pengguna
+    // Buat objek filter berdasarkan input pengguna
     const filter = {};
 
     if (date) {
@@ -94,6 +124,6 @@ document
     }
 
     // Filter mobil dan tampilkan hasilnya
-    const filteredCars = filterCars(cars, filter);
+    const filteredCars = filterCars(populatedCars, filter);
     displayCars(filteredCars);
   });
