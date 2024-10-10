@@ -804,20 +804,23 @@
     },
     {
         "id": "41b02e1e-a3db-433b-a1ee-6727b9d76f9f",
-        "plate": "XYZ 0987",
-        "manufacture": "Ford",
-        "model": "F150",
-        "image": "https://ik.imagekit.io/cwo2ztgff/salah_B1_S1_NBOaYYlYF.png",
-        "type": "Sedan",
-        "year": "2022",
-        "capacity": "2",
+        "plate": "XYZ 1234",
+        "manufacture": "Toyota",
+        "model": "New",
+        "image": "https://ik.imagekit.io/cwo2ztgff/salah_B1_S1_foE-27CLV.png",
+        "type": "blabla",
+        "year": "2000",
+        "capacity": "3",
         "options": [
             "GPS",
-            "Air Conditioning"
+            "Sunroof"
         ],
         "specs": [
-            "V6 Engines",
-            "Leather Seats"
-        ]
+            "V12 Engines",
+            "blablabla"
+        ],
+        "description": "blablalbalblalba",
+        "transmission": "Manual",
+        "available": "false"
     }
 ]
