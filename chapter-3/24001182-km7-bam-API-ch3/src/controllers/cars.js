@@ -6,7 +6,7 @@ const {
 const carService = require("../services/cars");
 const { v4: uuidv4 } = require("uuid");
 
-// Get all cars with optional filtering
+// Get all cars 
 exports.getCars = async (req, res) => {
   try {
     const { type, availability, capacity } = req.query;
@@ -42,7 +42,7 @@ exports.createCar = async (req, res) => {
         : [req.body.specs]
       : [];
 
-    // Create the new car object with image placed below model
+    // Create 
     const newCar = {
       id: uuidv4(),
       plate: req.body.plate,
@@ -83,10 +83,9 @@ exports.updateCar = async (req, res) => {
         : [req.body.specs]
       : [];
 
-    // Fetch the current car to check for existing image
     const existingCar = carService.getCarById(req.params.id);
 
-    // Create the updated car data object with image placed below model
+    // Updated 
     const updatedCarData = {
       plate: req.body.plate,
       manufacture: req.body.manufacture,
