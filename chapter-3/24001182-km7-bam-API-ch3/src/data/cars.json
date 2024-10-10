@@ -822,5 +822,26 @@
         "description": "blablalbalblalba",
         "transmission": "Manual",
         "available": "false"
+    },
+    {
+        "id": "778eebd4-05ff-44d1-94a5-3ecf1b901957",
+        "plate": "XYZ 1234",
+        "manufacture": "Toyota",
+        "model": "New",
+        "image": "https://ik.imagekit.io/cwo2ztgff/car25.min_2i5R9tRtM.jpg",
+        "capacity": "3",
+        "description": "blablalbalblalba",
+        "transmission": "Manual",
+        "available": "false",
+        "type": "blabla",
+        "year": "2000",
+        "options": [
+            "GPS",
+            "Sunroof"
+        ],
+        "specs": [
+            "V12 Engines",
+            "blablabla"
+        ]
     }
 ]

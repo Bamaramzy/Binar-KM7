@@ -83,12 +83,15 @@ exports.updateCar = async (req, res) => {
         : [req.body.specs]
       : [];
 
+    // Fetch the current car to check for existing image
+    const existingCar = carService.getCarById(req.params.id);
+
     // Create the updated car data object with image placed below model
     const updatedCarData = {
       plate: req.body.plate,
       manufacture: req.body.manufacture,
       model: req.body.model,
-      image: req.files ? req.files.carImage : null,
+      image: req.files ? req.files.carImage : existingCar.image,
       rentPerDay: req.body.rentPerDay,
       capacity: req.body.capacity,
       description: req.body.description,
