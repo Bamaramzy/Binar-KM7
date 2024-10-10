@@ -6,7 +6,7 @@ exports.validateGetCars = (req, res, next) => {
   const validateQuery = z.object({
     type: z.string().optional(),
     availability: z.string().optional(),
-    capacity: z.string().optional(),
+    capacity: z.number().optional(),
   });
 
   const resultValidateQuery = validateQuery.safeParse(req.query);
@@ -30,19 +30,34 @@ exports.validateGetCarById = (req, res, next) => {
   next();
 };
 
+const parseRequestBody = (req) => {
+  req.body.year = req.body.year ? parseInt(req.body.year, 10) : undefined;
+  req.body.capacity = req.body.capacity
+    ? parseInt(req.body.capacity, 10)
+    : undefined;
+  req.body.rentPerDay = req.body.rentPerDay
+    ? parseInt(req.body.rentPerDay, 10)
+    : undefined;
+  req.body.available = req.body.available
+    ? req.body.available === "true"
+    : undefined;
+};
+
 exports.validateCreateCar = (req, res, next) => {
+  parseRequestBody(req);
+
   const validateBody = z.object({
     plate: z.string(),
     manufacture: z.string(),
     model: z.string(),
-    rentPerDay: z.string(),
-    capacity: z.string(),
-    description: z.string(),
-    availableAt: z.string(),
-    transmission: z.string(),
-    available: z.string(),
+    rentPerDay: z.number().optional(),
+    capacity: z.number(),
+    description: z.string().optional(),
+    availableAt: z.string().optional(),
+    transmission: z.string().optional(),
+    available: z.boolean().optional(),
     type: z.string(),
-    year: z.string(),
+    year: z.number(),
     options: z.array(z.string()).optional(),
     specs: z.array(z.string()).optional(),
   });
@@ -76,6 +91,8 @@ exports.validateCreateCar = (req, res, next) => {
 };
 
 exports.validateUpdateCar = (req, res, next) => {
+  parseRequestBody(req);
+
   const validateParams = z.object({
     id: z.string(),
   });
@@ -89,14 +106,14 @@ exports.validateUpdateCar = (req, res, next) => {
     plate: z.string().optional(),
     manufacture: z.string().optional(),
     model: z.string().optional().optional(),
-    rentPerDay: z.string().optional(),
-    capacity: z.string().optional(),
+    rentPerDay: z.number().optional(),
+    capacity: z.number().optional(),
     description: z.string().optional(),
     availableAt: z.string().optional(),
     transmission: z.string().optional(),
-    available: z.string().optional(),
+    available: z.boolean().optional(),
     type: z.string().optional(),
-    year: z.string().optional(),
+    year: z.number().optional(),
     options: z.array(z.string()).optional(),
     specs: z.array(z.string()).optional(),
   });
