@@ -6,7 +6,7 @@ const {
 const carService = require("../services/cars");
 const { v4: uuidv4 } = require("uuid");
 
-// Get all cars 
+// Get all cars
 exports.getCars = async (req, res) => {
   try {
     const { type, availability, capacity } = req.query;
@@ -42,7 +42,7 @@ exports.createCar = async (req, res) => {
         : [req.body.specs]
       : [];
 
-    // Create 
+    // Create
     const newCar = {
       id: uuidv4(),
       plate: req.body.plate,
@@ -85,7 +85,7 @@ exports.updateCar = async (req, res) => {
 
     const existingCar = carService.getCarById(req.params.id);
 
-    // Updated 
+    // Updated
     const updatedCarData = {
       plate: req.body.plate,
       manufacture: req.body.manufacture,
