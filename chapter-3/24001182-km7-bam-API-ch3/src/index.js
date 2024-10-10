@@ -4,9 +4,10 @@ require("express-async-errors");
 const fileUpload = require("express-fileupload"); // Ensure this is imported
 const carRoutes = require("./routes/cars");
 const { errorHandler, notFoundURLHandler } = require("./midllewares/errors");
+const { process_params } = require("express/lib/router");
 
 const app = express();
-const port = 4000;
+const port = process.env.PORT || 4000;
 
 // Middleware to parse JSON requests
 app.use(express.json());
