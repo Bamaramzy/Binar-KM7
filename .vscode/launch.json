@@ -15,6 +15,30 @@
             "runtimeExecutable": "npm",
             "runtimeArgs": ["run", "dev"]
 
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Chapter 4",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "cwd": "${workspaceFolder}/chapter-4/24001182-km7-bam-DB-ch4",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": ["run", "dev"]
+
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Challange",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "cwd": "${workspaceFolder}/challange_4",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": ["run", "dev"]
+
         }
     ]
 }
