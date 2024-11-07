@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Image from 'react-bootstrap/Image';
 import { getManufactures } from '../../../services/manufactures';
 import { getTypes } from '../../../services/types';
 import { getModels } from '../../../services/models';
@@ -21,6 +22,7 @@ function EditCar() {
   const [manufactureId, setManufactureId] = useState(0);
   const [modelId, setModelId] = useState(0);
   const [image, setImage] = useState(undefined);
+  const [currentImage, setCurrentImage] = useState(''); 
   const [rentPerDay, setRentPerDay] = useState('');
   const [capacity, setCapacity] = useState('');
   const [description, setDescription] = useState('');
@@ -33,6 +35,7 @@ function EditCar() {
   const [specs, setSpecs] = useState([]);
   const [manufactures, setManufactures] = useState([]);
   const [types, setTypes] = useState([]);
+  const [models, setModels] = useState([]);
   const [carData, setCarData] = useState(null);
 
   useEffect(() => {
@@ -53,7 +56,7 @@ function EditCar() {
     const fetchModels = async () => {
       const result = await getModels();
       if (result?.success) {
-        setTypes(result.data);
+        setModels(result.data);
       }
     };
 
@@ -74,10 +77,12 @@ function EditCar() {
         setTypeId(result.data.type_id);
         setYear(result.data.year);
 
+        setCurrentImage(result.data.image);
+
         setOptions(result.data.options || []);
         setSpecs(result.data.specs || []);
       } else {
-        navigate('/'); 
+        navigate({ to: "/" }); 
       }
     };
 
@@ -87,13 +92,19 @@ function EditCar() {
     fetchCarData();
   }, [id, navigate]);
 
+  const onImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setImage(file); // Update the image state with the new file
+    }
+  };
   const onSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
     formData.append('plate', plate);
     formData.append('manufacture_id', manufactureId);
     formData.append('model_id', modelId);
-    formData.append('image', image); // Optional, only if updating the image
+    formData.append('image', image || currentImage); 
     formData.append('rentPerDay', rentPerDay);
     formData.append('capacity', capacity);
     formData.append('description', description);
@@ -107,18 +118,18 @@ function EditCar() {
     specs.forEach((spec) => formData.append('specs[]', spec));
 
     try {
-      const response = await updateCar(id, formData); // Update car using your service
+      const response = await updateCar(id, formData);
       if (response.success) {
-        // Handle success, redirect to car list or details page
-        navigate('/cars'); // Redirect after successful update
+        
+        navigate({ to: "/cars" }); 
         return;
       } else {
         console.error('Error updating car:', response.message);
-        alert(response.message); // Display error message
+        alert(response.message); 
       }
     } catch (error) {
       console.error('Network error:', error);
-      alert('Failed to update car, please try again later.'); // Display network error message
+      alert('Failed to update car, please try again later.'); 
     }
   };
 
@@ -126,7 +137,7 @@ function EditCar() {
     <Row className="mt-5">
       <Col className="offset-md-3">
         <Card>
-          <Card.Header className="text-center">Create Car</Card.Header>
+          <Card.Header className="text-center">Edit Car</Card.Header>
           <Card.Body>
             <Form onSubmit={onSubmit}>
               <Form.Group as={Row} className="mb-3" controlId="plate">
@@ -173,28 +184,19 @@ function EditCar() {
                     onChange={(event) => setModelId(event.target.value)}
                   >
                     <option disabled>Select Model</option>
-                    {/* Populate models based on selected manufacture */}
+                    {models.map((model) => (
+                      <option key={model.id} value={model.id}>
+                        {model.name}
+                      </option>
+                    ))}
                   </Form.Select>
-                </Col>
-              </Form.Group>
-              <Form.Group as={Row} className="mb-3" controlId="image">
-                <Form.Label column sm={3}>
-                  Image
-                </Form.Label>
-                <Col sm={9}>
-                  <Form.Control
-                    type="file"
-                    accept=".jpg,.png"
-                    onChange={(event) => setImage(event.target.files[0])}
-                    required
-                  />
                 </Col>
               </Form.Group>
               <Form.Group as={Row} className="mb-3" controlId="rentPerDay">
                 <Form.Label column sm={3}>
                   Rent per Day
                 </Form.Label>
-                <Col sm="9">
+                <Col sm={9}>
                   <Form.Control
                     type="number"
                     placeholder="Rent per Day"
@@ -251,7 +253,7 @@ function EditCar() {
                   Available At
                 </Form.Label>
                 <Col sm={9}>
-                  <Form.Control
+              <Form.Control
                     type="date"
                     placeholder="Available At"
                     required
@@ -333,12 +335,41 @@ function EditCar() {
                     value={specs.join(', ')}
                     onChange={(event) =>
                       setSpecs(
-                        event.target.value
-                          .split(',')
-                          .map((spec) => spec.trim()),
+                        event.target.value.split(',').map((spec) => spec.trim()),
                       )
                     }
                   />
+                </Col>
+              </Form.Group>
+              <Form.Group
+                as={Row}
+                className="mb-3"
+                controlId="image"
+              >
+                <Form.Label column sm={3}>
+                  Image
+                </Form.Label>
+                <Col sm={9}>
+                  <Form.Control
+                    type="file"
+                    placeholder="Choose File"
+                    required
+                    onChange={(event) => {
+                      setImage(event.target.files[0]);
+                      setCurrentImage(URL.createObjectURL(event.target.files[0]));
+                    }}
+                    accept=".jpg,.png"
+                  />
+                </Col>
+              </Form.Group>
+              <Form.Group
+                as={Row}
+                className="mb-3"
+                controlId="image"
+              >
+                <Form.Label column sm={3}></Form.Label>
+                <Col sm={9}>
+                  <Image src={currentImage} fluid />
                 </Col>
               </Form.Group>
               <Button variant="primary" type="submit">
@@ -349,5 +380,5 @@ function EditCar() {
         </Card>
       </Col>
     </Row>
-  )
+  );
 }

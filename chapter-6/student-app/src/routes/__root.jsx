@@ -1,21 +1,31 @@
 import { createRootRoute, Outlet } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/router-devtools";
-import Container from "react-bootstrap/Container";
+import { Container, Row, Col } from "react-bootstrap";;
 import NavigationBar from "../components/Navbar";
+import Sidebar from "../components/Sidebar";
 
 export const Route = createRootRoute({
     component: () => (
-        <>
-            {/* Navbar */}
-           <NavigationBar />
+        <div className="d-flex vh-100">
+            <Row className="w-100 m-0">
+                {/* Sidebar */}
+                <Col md={3} className="bg-dark text-white p-0">
+                    <Sidebar />
+                </Col>
 
-            <Container>
-                {/* Outlet is to detect the pathname or url and then render the component by pathname or url */}
-                <Outlet />
-            </Container>
+                {/* Main content */}
+                <Col md={9} className="p-0 d-flex flex-column">
+                    <NavigationBar />
 
-            {/* This is for debugging router */}
+                    <Container fluid className="flex-grow-1 overflow-auto p-3">
+                        {/* Render the component based on the current route */}
+                        <Outlet />
+                    </Container>
+                </Col>
+            </Row>
+
+            {/* Router DevTools for debugging */}
             <TanStackRouterDevtools />
-        </>
+        </div>
     ),
 });

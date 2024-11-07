@@ -1,10 +1,13 @@
-import { createLazyFileRoute } from "@tanstack/react-router";
+import { createLazyFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
-import { getDetailCars } from "../../services/cars";
-
+import Button from "react-bootstrap/Button";
+import { deleteCar, getDetailCars } from "../../services/cars";
+import { toast } from "react-toastify";
+import { confirmAlert } from "react-confirm-alert";
+import { useSelector } from "react-redux";
 
 export const Route = createLazyFileRoute("/cars/$id")({
     component: CarDetail,
@@ -12,6 +15,9 @@ export const Route = createLazyFileRoute("/cars/$id")({
 
 function CarDetail() {
     const { id } = Route.useParams();
+    const navigate = useNavigate();
+
+    const { user } = useSelector((state) => state.auth);
 
     const [car, setCar] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
@@ -22,7 +28,6 @@ function CarDetail() {
             setIsLoading(true);
             try {
                 const result = await getDetailCars(carId);
-                console.log(result.data); // Check data structure here
                 if (result?.success && result.data) {
                     setCar(result.data);
                     setIsNotFound(false);
@@ -36,12 +41,11 @@ function CarDetail() {
                 setIsLoading(false);
             }
         };
-    
+
         if (id) {
             getDetailCarsData(id);
         }
     }, [id]);
-    
 
     if (isLoading) {
         return (
@@ -62,6 +66,31 @@ function CarDetail() {
             </Row>
         );
     }
+
+    const onDelete = async (event) => {
+        event.preventDefault();
+        confirmAlert({
+            title: "Confirm to delete",
+            message: "Are you sure to delete this car?",
+            buttons: [
+                {
+                    label: "Yes",
+                    onClick: async () => {
+                        const result = await deleteCar(id);
+                        if (result.success) {
+                            navigate({ to: "/" });
+                            return;
+                        }
+                        toast.error(result?.message);
+                    },
+                },
+                {
+                    label: "No",
+                    onClick: () => {},
+                },
+            ],
+        })
+    };
 
     return (
         <Row className="mt-5">
@@ -87,6 +116,34 @@ function CarDetail() {
                         <Card.Text>
                             <strong>Rent per Day:</strong> ${car?.rentPerDay || "N/A"}
                         </Card.Text>
+
+                        {user?.role_id === 1 && (
+                            <>
+                        <Card.Text>
+                            <div className="d-grid gap-2">
+                                <Button
+                                    as={Link}
+                                    href={`/cars/edit/${id}`}
+                                    variant="primary"
+                                    size="md"
+                                >
+                                    Edit Car
+                                </Button>
+                            </div>
+                        </Card.Text>
+                        <Card.Text>
+                            <div className="d-grid gap-2">
+                                <Button
+                                    onClick={onDelete}
+                                    variant="danger"
+                                    size="md"
+                                >
+                                    Delete Car
+                                </Button>
+                            </div>
+                        </Card.Text>
+                        </>
+                    )}
                     </Card.Body>
                 </Card>
             </Col>

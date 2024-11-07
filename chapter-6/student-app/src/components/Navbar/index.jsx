@@ -58,6 +58,16 @@ const NavigationBar = () => {
                         <Nav.Link as={Link} to="/">
                             Home
                         </Nav.Link>
+                        {user && user.role_id === 1 && (
+                            <Nav.Link as={Link} to="/cars/create">
+                                Create Car
+                            </Nav.Link>
+                        )}
+                        {user && user.role_id === 1 && (
+                            <Nav.Link as={Link} to="/cars/createManufactures">
+                                Create Manufactures
+                            </Nav.Link>
+                        )}
                     </Nav>
                     <Nav>
                         {user ? (

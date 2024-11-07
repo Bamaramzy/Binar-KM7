@@ -1,23 +1,29 @@
-import { createLazyFileRoute } from "@tanstack/react-router";
+import { createLazyFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Image from "react-bootstrap/Image";
 import { getManufactures } from "../../services/manufactures";
 import { getTypes } from "../../services/types";
 import { getModels } from "../../services/models";
+import { createCar } from "../../services/cars"; 
+
 
 export const Route = createLazyFileRoute("/cars/create")({
     component: CreateCar,
 });
 
 function CreateCar() {
+    const navigate = useNavigate();
+
     const [plate, setPlate] = useState("");
     const [manufactureId, setManufactureId] = useState(0);
     const [modelId, setModelId] = useState(0);
     const [image, setImage] = useState(undefined);
+    const [currentImage, setCurrentImage] = useState(undefined);
     const [rentPerDay, setRentPerDay] = useState("");
     const [capacity, setCapacity] = useState("");
     const [description, setDescription] = useState("");
@@ -30,6 +36,7 @@ function CreateCar() {
     const [specs, setSpecs] = useState([]);
     const [manufactures, setManufactures] = useState([]);
     const [types, setTypes] = useState([]);
+    const [models, setModels] = useState([]);
 
     useEffect(() => {
         const fetchManufactures = async () => {
@@ -49,8 +56,7 @@ function CreateCar() {
         const fetchModels = async () => {
             const result = await getModels();
             if (result?.success) {
-                // Assuming you need to set models, change this line accordingly
-                // setModels(result.data); 
+                setModels(result.data);
             }
         };
 
@@ -61,40 +67,31 @@ function CreateCar() {
 
     const onSubmit = async (event) => {
         event.preventDefault();
-        const formData = new FormData();
-        formData.append("plate", plate);
-        formData.append("manufacture_id", manufactureId);
-        formData.append("model_id", modelId);
-        formData.append("image", image);
-        formData.append("rentPerDay", rentPerDay);
-        formData.append("capacity", capacity);
-        formData.append("description", description);
-        formData.append("availableAt", availableAt);
-        formData.append("transmission", transmission);
-        formData.append("available", available);
-        formData.append("type_id", typeId);
-        formData.append("year", year);
-        
-        options.forEach(option => formData.append("options[]", option));
-        specs.forEach(spec => formData.append("specs[]", spec));
 
-        try {
-            const response = await fetch("YOUR_API_ENDPOINT/cars", {
-                method: "POST",
-                body: formData,
-            });
-            const data = await response.json();
+        const request = {
+            plate,
+            modelId, 
+            manufactureId, 
+            rentPerDay,
+            capacity,
+            description,
+            available,
+            availableAt,
+            transmission,
+            typeId, 
+            year,
+            options,
+            specs,
+            image,
+        };
 
-            if (data.success) {
-                // Handle success, maybe reset form or show a success message
-                console.log("Car created successfully:", data);
-            } else {
-                // Handle error
-                console.error("Error creating car:", data.message);
-            }
-        } catch (error) {
-            console.error("Network error:", error);
+        const result = await createCar(request);
+        if (result?.success) {
+            navigate({ to: "/" });
+            return;
         }
+
+        alert(result?.message || "Failed to create car");
     };
 
     return (
@@ -120,7 +117,7 @@ function CreateCar() {
                                 <Form.Label column sm={3}>Manufacture</Form.Label>
                                 <Col sm={9}>
                                     <Form.Select
-                                        required
+                                        
                                         value={manufactureId}
                                         onChange={(event) => setManufactureId(event.target.value)}
                                     >
@@ -137,24 +134,17 @@ function CreateCar() {
                                 <Form.Label column sm={3}>Model</Form.Label>
                                 <Col sm={9}>
                                     <Form.Select
-                                        required
+                                        
                                         value={modelId}
                                         onChange={(event) => setModelId(event.target.value)}
                                     >
                                         <option disabled>Select Model</option>
-                                        {/* Populate models based on selected manufacture */}
+                                        {models.map((model) => (
+                                            <option key={model.id} value={model.id}>
+                                                {model.name}
+                                            </option>
+                                        ))}
                                     </Form.Select>
-                                </Col>
-                            </Form.Group>
-                            <Form.Group as={Row} className="mb-3" controlId="image">
-                                <Form.Label column sm={3}>Image</Form.Label>
-                                <Col sm={9}>
-                                    <Form.Control
-                                        type="file"
-                                        accept=".jpg,.png"
-                                        onChange={(event) => setImage(event.target.files[0])}
-                                        required
-                                    />
                                 </Col>
                             </Form.Group>
                             <Form.Group as={Row} className="mb-3" controlId="rentPerDay">
@@ -163,7 +153,7 @@ function CreateCar() {
                                     <Form.Control
                                         type="number"
                                         placeholder="Rent per Day"
-                                        required
+                                        
                                         value={rentPerDay}
                                         onChange={(event) => setRentPerDay(event.target.value)}
                                     />
@@ -175,7 +165,7 @@ function CreateCar() {
                                     <Form.Control
                                         type="text"
                                         placeholder="Year"
-                                        required
+                                        
                                         value={year}
                                         onChange={(event) => setYear(event.target.value)}
                                     />
@@ -187,7 +177,7 @@ function CreateCar() {
                                     <Form.Control
                                         type="number"
                                         placeholder="Capacity"
-                                        required
+                                        
                                         value={capacity}
                                         onChange={(event) => setCapacity(event.target.value)}
                                     />
@@ -199,7 +189,7 @@ function CreateCar() {
                                     <Form.Control
                                         as="textarea"
                                         placeholder="Description"
-                                        required
+                                        
                                         value={description}
                                         onChange={(event) => setDescription(event.target.value)}
                                     />
@@ -211,7 +201,7 @@ function CreateCar() {
                                     <Form.Control
                                         type="date"
                                         placeholder="Available At"
-                                        required
+                                        
                                         value={availableAt}
                                         onChange={(event) => setAvailableAt(event.target.value)}
                                     />
@@ -243,7 +233,7 @@ function CreateCar() {
                                 <Form.Label column sm={3}>Type</Form.Label>
                                 <Col sm={9}>
                                     <Form.Select
-                                        required
+                                        
                                         value={typeId}
                                         onChange={(event) => setTypeId(event.target.value)}
                                     >
@@ -278,15 +268,46 @@ function CreateCar() {
                                     />
                                 </Col>
                             </Form.Group>
-                            <Button variant="primary" type="submit">
-                                Submit
-                            </Button>
+                            <Form.Group
+                              as={Row}
+                              className="mb-3"
+                              controlId="image"
+                            >
+                              <Form.Label column sm={3}>
+                                Image
+                              </Form.Label>
+                              <Col sm={9}>
+                                <Form.Control
+                                  type="file"
+                                  placeholder="Choose File"
+                                  
+                                  onChange={(event) => {
+                                    setImage(event.target.files[0]);
+                                    setCurrentImage(URL.createObjectURL(event.target.files[0]));
+                                  }}
+                                  accept=".jpg,.png"
+                                />
+                              </Col>
+                            </Form.Group>
+                            <Form.Group
+                              as={Row}
+                              className="mb-3"
+                              controlId="image"
+                            >
+                              <Form.Label column sm={3}></Form.Label>
+                              <Col sm={9}>
+                                <Image src={currentImage} fluid />
+                              </Col>
+                            </Form.Group>
+                            <div className="d-grid gap-2">
+                                <Button variant="primary" type="submit">Submit</Button>
+                            </div>
                         </Form>
                     </Card.Body>
                 </Card>
             </Col>
+            <Col md={3}></Col>
         </Row>
     );
+    
 }
-
-export default CreateCar;

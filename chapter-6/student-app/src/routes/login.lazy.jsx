@@ -8,6 +8,7 @@ import Row from "react-bootstrap/Row";
 import { useDispatch, useSelector } from "react-redux";
 import { setToken } from "../redux/slices/auth";
 import { login } from "../services/auth";
+import { toast } from "react-toastify";
 
 export const Route = createLazyFileRoute("/login")({
     component: Login,
@@ -39,17 +40,17 @@ function Login() {
         };
 
         // hit the login API with the data
-        const result = await login(body);
+         const result = await login(body);
         if (result.success) {
-            // save token to local storage
+            // set token to global state
             dispatch(setToken(result.data.token));
 
-            //redirect to home
-           navigate({ to: "/" });
+            // redirect to home
+            navigate({ to: "/" });
             return;
         }
 
-        alert(result.message);
+        toast.error(result?.message);
     };
 
     return (

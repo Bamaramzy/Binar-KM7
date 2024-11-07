@@ -7,6 +7,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import { useDispatch, useSelector } from "react-redux";
 import { setToken } from "../redux/slices/auth";
+import { toast } from "react-toastify";
 
 export const Route = createLazyFileRoute("/register")({
     component: Register,
@@ -55,7 +56,7 @@ function Register() {
             return;
         }
 
-        alert(result.message);
+        toast.error(result?.message);
     };
 
     return (
